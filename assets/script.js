@@ -18,26 +18,31 @@ const slides = [
 ]
 
 let currentIndex = 0
-
+// VARIABLES RÉCUPÉRANT LES FLÈCHES DU CAROUSSEL //
 let arrowLeft = document.querySelector('.arrow_left')
 let arrowRight = document.querySelector('.arrow_right')
+
+// VARIABLES RÉCUPÉRANT LA CLASSE DE L'IMAGE DE LA BANNIÈRE //
 let imgElement = document.querySelector('.banner-img')
+
+// VARIABLES RÉCUPÉRANT LE TEXTE SUR L'IMAGE ET LA CLASSE DES BULLETS POINTS //
 let tLine = document.querySelector('#banner p')
 let dots = document.querySelectorAll('.dot')
 
-
+// AU CLICK SUR LA FLÈCHE DE DROITE ON AVANCE DANS LE TABLEAU //
 arrowRight.addEventListener("click", (event) => {
 	currentIndex = (currentIndex + 1) % slides.length
-	updateImage()
+	updateSlide()
 })
 
+// AU CLICK SUR LA FLÈCHE DE GAUCHE ON RECULE DANS LE TABLEAU //
 arrowLeft.addEventListener("click", (event) => {
 	currentIndex = (currentIndex - 1 + slides.length) % slides.length
-	updateImage()
+	updateSlide()
 })
 
-
-function updateImage (){
+// FONCTION PERMETTANT DE METTRE À JOUR L'IMAGE ET LES BULLETS POINTS EN FONCTION DE LEURS POSITION DANS L'INDEX DU TABLEAU //
+function updateSlide (){
 	imgElement.src = "./assets/images/slideshow/" + slides[currentIndex].image
 	tLine.innerHTML = slides[currentIndex].tagLine
 	// MAJ des bullets points
